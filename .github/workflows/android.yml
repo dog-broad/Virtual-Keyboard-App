@@ -36,29 +36,19 @@ jobs:
         run: echo "${{ secrets.KEY_STORE }}" | base64 -d > keystore.jks
 
       # Step 6: Sign APK
-      - name: Sign app APK
+      - uses: r0adkll/sign-android-release@v1
+        name: Sign app APK
+        # ID used to access action output
         id: sign_app
-        run: |
-          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
-            -keystore keystore.jks \
-            -storepass "${{ secrets.KEY_STORE_PASS }}" \
-            -keypass "${{ secrets.KEY_STORE_PASS }}" \
-            app/build/outputs/apk/release/app-release-unsigned.apk \
-            "${{ secrets.KEY_STORE_ALIAS }}"
-
-      # Step 7: Verify APK signature
-      - name: Verify APK signature
-        run: jarsigner -verify -verbose -certs app/build/outputs/apk/release/app-release-unsigned.apk
-
-      # Step 8: Zipalign APK (optional but recommended)
-      - name: Zipalign APK
-        run: zipalign -v 4 \
-            app/build/outputs/apk/release/app-release-unsigned.apk \
-            app/build/outputs/apk/release/app-release-signed.apk
-
-      # Step 9: Upload Signed APK as artifact
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.KEY_STORE }}
+          alias: ${{ secrets.KEY_STORE_ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASS }}
+          keyPassword: ${{ secrets.KEY_STORE_PASS }}
+    
+      # Step 7: Upload Signed APK as artifact
+      - uses: actions/upload-artifact@v2
         with:
           name: Signed app bundle
-          path: app/build/outputs/apk/release/app-release-signed.apk
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
