@@ -58,6 +58,9 @@ jobs:
           name: Signed app bundle
           path: ${{ steps.sign_app.outputs.signedReleaseFile }}
 
+      - name: echo signedReleaseFile
+        run: echo ${{ steps.sign_app.outputs.signedReleaseFile }}
+
       # Step 8: Create a release
       - name: Create Release
         id: create_release
@@ -79,6 +82,8 @@ jobs:
           asset_path: ${{ steps.sign_app.outputs.signedReleaseFile }}
           asset_name: signed-app-release.apk
           asset_content_type: application/vnd.android.package-archive
+        env:
+            GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
