@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba36f171-40c6-4b21-9d1c-aec6eb88dd17" name="Changes" comment="More more changes">
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    <list default="true" id="ba36f171-40c6-4b21-9d1c-aec6eb88dd17" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.nojekyll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-release-unsigned-signed.apk" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "ExportApk.ApkPathForVirtualKeyboardApp.app": "D:\\VirtualKeyboardApp\\app",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging gh-pages",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/VirtualKeyboardApp/app/src/main/res/mipmap-xxxhdpi",
     "node.js.detected.package.eslint": "true",
@@ -158,7 +159,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1721141276651</updated>
-      <workItem from="1721141277340" duration="19873000" />
+      <workItem from="1721141277340" duration="20083000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit&#10;&#10;1. Created basic Android project structure.&#10;2. Added EditText for user input.&#10;3. Integrated EditText fields for IP address and port.&#10;4. Included SeekBar for adjusting text speed.&#10;5. Implemented Button for sending text to a server.&#10;6. Configured basic socket communication for text transmission.&#10;7. Setup initial UI layout using RelativeLayout and LinearLayout.&#10;8. Added basic error handling for socket operations.">
       <option name="closed" value="true" />
