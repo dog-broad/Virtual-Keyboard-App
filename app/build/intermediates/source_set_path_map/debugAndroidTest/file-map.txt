@@ -1,5 +1,0 @@
-com.dog_broad.virtualkeyboardapp.test.app-core-1.6.1-0 C:\Users\Rushi\.gradle\caches\transforms-3\530b409b9886f5e91cd9a8a04bf82712\transformed\core-1.6.1\res
-com.dog_broad.virtualkeyboardapp.test.app-androidTest-1 D:\VirtualKeyboardApp\app\build\generated\res\resValues\androidTest\debug
-com.dog_broad.virtualkeyboardapp.test.app-mergeDebugAndroidTestResources-2 D:\VirtualKeyboardApp\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.dog_broad.virtualkeyboardapp.test.app-mergeDebugAndroidTestResources-3 D:\VirtualKeyboardApp\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.dog_broad.virtualkeyboardapp.test.app-merged_res-4 D:\VirtualKeyboardApp\app\build\intermediates\merged_res\debugAndroidTest

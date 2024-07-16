@@ -1,3 +1,0 @@
-com.dog_broad.virtualkeyboardapp.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

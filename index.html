@@ -1,55 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download APK</title>
+    <title>Virtual Keyboard App</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS for Gradient and Animations -->
+    <!-- Devicon CSS -->
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <!-- Custom CSS for Space Theme -->
     <style>
         body {
-            background: linear-gradient(135deg, #ffcc70, #f25c54, #4f9da6);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            height: 100vh;
+            background: url('./background.png') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
+            color: #ffffff;
+            font-family: 'Roboto', Arial, sans-serif;
+            overflow: auto;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: glow 10s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                color: #fff;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            }
+            50% {
+                color: #00bfff;
+                text-shadow: 2px 2px 8px rgba(0, 191, 255, 0.8),
+                0px 0px 20px rgba(0, 191, 255, 0.5),
+                0px 0px 30px rgba(0, 191, 255, 0.3);
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .btn-animated {
-            background-color: #4f9da6;
+            background-color: #00bfff;
             border: none;
             color: white;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 1.2rem;
+            margin: 10px 0;
+            border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            animation: glow-btn 2s infinite alternate;
         }
 
-        .btn-animated:hover {
-            background-color: #3c8d8c;
-            transform: scale(1.1);
+        @keyframes glow-btn {
+            0% {
+                box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.8);
+            }
+            100% {
+                box-shadow: 0px 0px 20px rgba(0, 191, 255, 0.8);
+            }
+        }
+
+        .features {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            margin-right: 10px;
+            color: #00bfff;
+        }
+
+        .video-container {
+            margin-top: 20px;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
+
 <body>
-<div class="container text-center">
-    <h1>Download Our App</h1>
-    <p>Click the button below to download the latest version of our APK.</p>
-    <a href="path-to-your-apk/signed-app-release.apk" class="btn btn-animated">Download APK</a>
+<div class="container mt-5 mb-3 mx-3">
+    <h1>Virtual Keyboard App</h1>
+    <p>Welcome to the Virtual Keyboard App! This app lets you type on your PC using your Android device. 🚀</p>
+    <a href="/signed-app-release.apk" class="btn btn-animated">
+        <i class="devicon-android-plain"></i> Download APK
+    </a>
+
+    <div class="features">
+        <h2>Features</h2>
+        <div class="feature-item">
+            <i class="devicon-java-plain feature-icon"></i> Dynamic IP address and port typing
+        </div>
+        <div class="feature-item">
+            <i class="devicon-android-plain feature-icon"></i> Remembers the last IP address used
+        </div>
+        <div class="feature-item">
+            <i class="devicon-python-plain feature-icon"></i> Adjustable text input speed
+        </div>
+    </div>
+
+    <div class="features">
+        <h2>Installation Instructions</h2>
+        <p>1. Click on the Download APK button to download the app. 📥</p>
+        <p>2. Install the APK on your Android device. 📲</p>
+        <p>3. Open the app and connect to your PC using the IP address and port. 🌐</p>
+    </div>
+
+    <div class="video-container mb-3">
+        <video controls>
+            <source src="KeyboardApp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <p>I know the UI isn't intuitive, but I'll improve it. Need help? Contact me! 🆘</p>
 </div>
 
 <!-- Bootstrap JS and dependencies -->
@@ -57,4 +168,5 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
