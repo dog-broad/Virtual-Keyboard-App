@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <!-- EditText for typing text -->
+            <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Type text here"
+                    android:padding="12dp"
+                    android:background="@drawable/edittext_background"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color" />
+
+            <!-- EditText for IP address -->
+            <EditText
+                    android:id="@+id/ipAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="IP Address"
+                    android:padding="12dp"
+                    android:background="@drawable/edittext_background"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color" />
+
+            <!-- EditText for port number -->
+            <EditText
+                    android:id="@+id/port"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Port"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:background="@drawable/edittext_background"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color" />
+
+            <!-- SeekBar for adjusting text speed -->
+            <SeekBar
+                    android:id="@+id/textSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:max="100" />
+
+            <!-- TextView to display current text speed -->
+            <TextView
+                    android:id="@+id/textSpeedValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Text Speed: 50 letters/sec"
+                    android:textColor="@color/text_color" />
+
+            <!-- Button to send text -->
+            <Button
+                    android:id="@+id/btnSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Send Text"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/white" />
+
+            <!-- TextView to display progress -->
+            <TextView
+                    android:id="@+id/textProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_blue_light" />
+
+            <!-- ProgressBar to indicate sending progress -->
+            <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
