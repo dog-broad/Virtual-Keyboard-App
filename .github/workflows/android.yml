@@ -24,6 +24,8 @@ jobs:
           cache: gradle
 
       # Step 3: Build Release APK
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
