@@ -1,0 +1,4 @@
+#Wed Jul 17 00:43:58 IST 2024
+base.0=D\:\\VirtualKeyboardApp\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

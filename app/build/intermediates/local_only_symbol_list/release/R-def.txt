@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+color background_color
+color black
+color button_color
+color button_pressed_color
+color edittext_background_color
+color hint_color
+color ic_launcher_background
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color text_color
+color text_speed_color
+color white
+drawable button_background
+drawable edittext_background
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id btnSend
+id editText
+id ipAddress
+id port
+id progressBar
+id textProgress
+id textSpeed
+id textSpeedValue
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
+string app_name
+style Theme.VirtualKeyboardApp
+xml backup_rules
+xml data_extraction_rules

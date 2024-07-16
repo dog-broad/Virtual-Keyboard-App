@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.dog_broad.virtualkeyboardapp-mergeReleaseResources-29:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Rushi\\.gradle\\caches\\transforms-3\\fdaf683bc19fd41d752ba0083ef5e9e4\\transformed\\appcompat-1.7.0\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}
