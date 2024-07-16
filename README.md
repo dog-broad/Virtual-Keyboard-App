@@ -72,7 +72,12 @@ You’ll need a Python server running on your PC to receive the messages from th
 
 ## 📝 Note
 
-Make sure your PC and Android device are on the same network for a smooth connection! 🌍
+Make sure your PC and Android device are on the same network for a smooth connection. 
+
+
+## ⚠️ Known Issues
+
+I know the UI isn't super intuitive right now, but I'm working on it! 😅 If you have suggestions or want to help improve it, please reach out!
 
 ## 🎉 Contributing
 
