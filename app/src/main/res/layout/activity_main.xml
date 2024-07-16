@@ -59,13 +59,14 @@
                     android:max="100" />
 
             <!-- TextView to display current text speed -->
+            <!-- TextView to display current text speed -->
             <TextView
                     android:id="@+id/textSpeedValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:text="Text Speed: 50 letters/sec"
-                    android:textColor="@color/text_color" />
+                    android:textColor="@color/text_speed_color" />
 
             <!-- Button to send text -->
             <Button

@@ -66,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
                 String ip = ipAddress.getText().toString();
                 int portNum = Integer.parseInt(port.getText().toString());
                 int speed = textSpeed.getProgress();
+
+                if (ip.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "IP Address cannot be empty", Toast.LENGTH_SHORT).show();
+                    return; // Exit the method if IP Address is empty
+                }
+
                 savePreferences(ip, portNum);
                 sendText(message, ip, portNum, speed);
                 Toast.makeText(MainActivity.this, "Text Sent", Toast.LENGTH_SHORT).show();

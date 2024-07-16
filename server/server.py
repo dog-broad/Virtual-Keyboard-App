@@ -1,3 +1,4 @@
+import os
 import socket
 import pyautogui
 from datetime import datetime
@@ -6,13 +7,8 @@ import tkinter as tk
 import pystray
 from PIL import Image, ImageTk
 from pystray import MenuItem as item
-
 SERVER_HOST = '0.0.0.0'  # Listen on all available interfaces
 SERVER_PORT = 12345
-
-def log_received_text(text):
-    with open("received_text_log.txt", "a") as log_file:
-        log_file.write(f"{datetime.now()}: {text}\n")
 
 def handle_client(client_socket, client_address):
     with client_socket:
@@ -23,9 +19,6 @@ def handle_client(client_socket, client_address):
                 break
             received_text = data.decode('utf-8')
             print(f"Received: {received_text}")
-
-            # Log received text
-            log_received_text(received_text)
 
             # Simulate typing into another application
             pyautogui.typewrite(received_text)
