@@ -46,7 +46,10 @@ jobs:
           alias: ${{ secrets.KEY_STORE_ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASS }}
           keyPassword: ${{ secrets.KEY_STORE_PASS }}
-    
+        env:
+          # override default build-tools version (33.0.0) -- optional
+          BUILD_TOOLS_VERSION: "34.0.0"
+          
       # Step 7: Upload Signed APK as artifact
       - uses: actions/upload-artifact@v2
         with:
