@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # Allow manual trigger from the Actions tab
 
 permissions:
-  packages: write  # Ensure the token has write permissions for packages
+  packages: write
   contents: write  # Ensure the token has write permissions for contents
 
 jobs:
@@ -58,15 +58,27 @@ jobs:
           name: Signed app bundle
           path: ${{ steps.sign_app.outputs.signedReleaseFile }}
 
-      - name: Echo APK
-        run: echo Signed APK FILE ${{steps.sign_app.outputs.signedReleaseFile}}
-
-      - name: Release signed APK
-        uses: MicahSphelele/action-publish-signed-apk@main
+      # Step 8: Create a release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body: Release for version ${{ github.ref_name }}.
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          APP_FOLDER: app
-          FILE_DIR: ${{steps.sign_app.outputs.signedReleaseFile}}
+
+      # Step 9: Upload APK to release
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+          asset_name: signed-app-release.apk
+          asset_content_type: application/vnd.android.package-archive
 
   deploy:
     runs-on: ubuntu-latest
