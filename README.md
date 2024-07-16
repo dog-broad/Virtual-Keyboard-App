@@ -1,9 +1,9 @@
 # 🖥️ Virtual Keyboard App
 
-Welcome to the **Virtual Keyboard App**! This app lets you type on your PC using your Android device. 🎉  
+Welcome to the **Virtual Keyboard App**! This app lets you type on your PC using text written into your Android device. 🎉  
 It's a fun way to send messages to your PC without touching the keyboard! 🚀
 
-The App takes text input from the user and sends it to the PC over a network connection. The PC then types the text in real time! 📬
+The app takes text input from the user and sends it to the PC over a **TCP network connection**. The PC then types the text in real time! 📬
 
 ## 📱 Features
 
@@ -16,10 +16,9 @@ The App takes text input from the user and sends it to the PC over a network con
 
 You’ll need a Python server running on your PC to receive the messages from the app. A simple server code is provided in the `server` directory. 🐍
 
-- It will listen for incoming messages from the app.
+- It will listen for incoming TCP messages from the app.
 - It is responsible for receiving the text and typing it on the PC.
 - A Tray Icon is also provided to easily start and stop the server. Access it by right-clicking the icon in the system tray.
-
 
 ## 🛠️ Getting Started
 
@@ -30,7 +29,7 @@ You’ll need a Python server running on your PC to receive the messages from th
    git clone https://github.com/dog-broad/VirtualKeyboardApp.git
    ```
 
-   Or maka a fork and clone instead.
+   Or make a fork and clone instead.
 
 2. **Set Up the Server**:
 
@@ -72,8 +71,7 @@ You’ll need a Python server running on your PC to receive the messages from th
 
 ## 📝 Note
 
-Make sure your PC and Android device are on the same network for a smooth connection. 
-
+Make sure your PC and Android device are on the same network for a smooth connection.
 
 ## ⚠️ Known Issues
 
