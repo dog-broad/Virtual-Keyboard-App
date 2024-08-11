@@ -43,12 +43,11 @@ jobs:
           $upload_url = $release.upload_url -replace '\{.*\}', ''
           Write-Output "Release ID: $release_id"
           Write-Output "Upload URL: $upload_url"
-          echo "release_id=$release_id" >> $env:GITHUB_ENV
-          echo "upload_url=$upload_url" >> $env:GITHUB_ENV
+          [System.IO.File]::WriteAllText("$env:GITHUB_ENV", "release_id=$release_id`nupload_url=$upload_url")
 
       - name: Upload to latest release
         shell: pwsh
         run: |
           $filePath = "server/dist/ServerApp.exe"
-          $uploadUrl = "${{ env:upload_url }}?name=ServerApp.exe"
+          $uploadUrl = "${env:upload_url}?name=ServerApp.exe"
           Invoke-RestMethod -Uri $uploadUrl -Method Post -Headers @{ Authorization = "token $env:GITHUB_TOKEN"; "Content-Type" = "application/octet-stream" } -InFile $filePath
