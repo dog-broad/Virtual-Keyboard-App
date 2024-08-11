@@ -34,6 +34,12 @@ jobs:
         run: |
           pyinstaller --name=ServerApp --onefile --windowed --icon='server/server.ico' --add-data="server/server.ico;." server/server.py
 
+      - name: Upload executable as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ServerApp
+          path: server/dist/ServerApp.exe
+
       - name: Get latest release
         id: get_release
         shell: pwsh
@@ -45,9 +51,23 @@ jobs:
           Write-Output "Upload URL: $upload_url"
           [System.IO.File]::WriteAllText("$env:GITHUB_ENV", "release_id=$release_id`nupload_url=$upload_url")
 
+  upload:
+    runs-on: ubuntu-latest  # This job can run on Ubuntu since it just uploads artifacts
+    needs: build  # Ensure this job runs after the build job completes
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ServerApp
+
       - name: Upload to latest release
-        shell: pwsh
+        shell: bash
         run: |
-          $filePath = "server/dist/ServerApp.exe"
-          $uploadUrl = "${env:upload_url}?name=ServerApp.exe"
-          Invoke-RestMethod -Uri $uploadUrl -Method Post -Headers @{ Authorization = "token $env:GITHUB_TOKEN"; "Content-Type" = "application/octet-stream" } -InFile $filePath
+          filePath="ServerApp.exe"
+          uploadUrl="${{ env.upload_url }}?name=ServerApp.exe"
+          echo "Uploading $filePath to $uploadUrl"
+          curl -X POST "$uploadUrl" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/octet-stream" \
+            --data-binary @"$filePath"
