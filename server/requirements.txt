@@ -1,0 +1,5 @@
+customtkinter==5.2.2
+pyautogui==0.9.54
+pystray==0.19.5
+win11toast==0.35
+pillow==10.4.0
