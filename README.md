@@ -5,7 +5,7 @@ It's a fun way to send messages to your PC without touching the keyboard! 🚀
 
 The app takes text input from the user and sends it to the PC over a **TCP network connection**. The PC then types the text in real time! 📬
 
-## 📱 Features
+## 📱 Key Features
 
 - **Dynamic IP and Port**: Easily connect to your PC by entering the IP address and port. 🌐
 - **Last Used Memory**: The app remembers the last IP address you used, so no need to enter it every time! 🧠
@@ -14,68 +14,80 @@ The app takes text input from the user and sends it to the PC over a **TCP netwo
 
 ## 💻 Python Server
 
-You’ll need a Python server running on your PC to receive the messages from the app. A simple server code is provided in the `server` directory. 🐍
+To use the Virtual Keyboard App, you’ll need to run a Python server on your PC. This server handles incoming messages from the app and types them out on your computer. 🖥️
 
-- It will listen for incoming TCP messages from the app.
-- It is responsible for receiving the text and typing it on the PC.
-- A Tray Icon is also provided to easily start and stop the server. Access it by right-clicking the icon in the system tray.
+### Server Features
+
+- **TCP Listener**: Receives text messages from the app.
+- **Typing Automation**: Types out the received text on your PC.
+- **System Tray Icon**: Easily start and stop the server with a convenient tray icon.
 
 ## 🛠️ Getting Started
 
-1. **Clone the Repo**:
+1. **Clone the Repository**:
 
-   Get the code by cloning this repository.
+   First, clone the repository to get the code.
    ```bash
    git clone https://github.com/dog-broad/VirtualKeyboardApp.git
    ```
 
-   Or make a fork and clone instead.
+   Alternatively, you can fork the repository and clone your fork.
 
 2. **Set Up the Server**:
 
-   Run the Python server code on your PC. Make sure to set the correct port! ⚙️
-   > The default port is `12345`.
+   - If you don't have Python installed, download and install it from the [official website](https://www.python.org/downloads/).
 
-    - Create a virtual environment and install the required packages.
-       ```bash
-       cd server
-       python -m venv venv
-       venv\Scripts\activate
-       pip install -r requirements.txt
-       ```
+   Follow these steps to set up the Python server:
 
-    - Run the server in the background.
-       ```bash
-       cd server
-       python server.py
-       ```
+   - **Create a Virtual Environment**:
+     ```bash
+     cd VirtualKeyboardApp/server
+     python -m venv venv
+     venv\Scripts\activate  # For Windows
+     source venv/bin/activate  # For macOS/Linux
+     ```
 
-    - Start the server.
-        - Access the System tray icon and click the "Start Server" button.
+   - **Install Dependencies**:
+     ```bash
+     pip install -r requirements.txt
+     ```
 
+   - **Run the Server**:
+     ```bash
+     python server.py
+     ```
+
+   - This will start the GUI server application. You can start and stop with the options provided. 🚀
+   - Closing the GUI will minimize the server to the system tray.  
+   
+   
+   *Note: To stop the server, right-click the system tray icon and select "Exit".*
+   
 3. **Install the App**:
 
-   Open the project in Android Studio and build the app on your Android device.
+   Open the project in Android Studio, build the app, and install it on your Android device.
 
 4. **Connect and Type**:
 
-   Enter your PC's IP address and port in the app, type your message, and hit "Send"!
+   - Open the app on your Android device.
+   - Enter your PC’s IP address and port number.
+   - Type your message and hit "Send".
 
-## 📜 Usage
+## 📜 How to Use
 
-1. Open the app on your Android device. 📱
-2. Enter the IP address and port number of your PC.
-3. Type your message in the text box.
-4. Adjust the text speed if needed.
-5. Click the "Send Text" button and watch the magic happen! 🪄
+1. Launch the app on your Android device. 📱
+2. Input your PC’s IP address and port number.
+3. Compose your message in the text box.
+4. Adjust the text speed if desired.
+5. Tap the "Send Text" button and watch the magic unfold! 🪄
 
-## 📝 Note
+## 📝 Important Notes
 
-Make sure your PC and Android device are on the same network for a smooth connection.
+- Ensure both your PC and Android device are on the same network for seamless operation.
 
 ## ⚠️ Known Issues
 
-I know the UI isn't super intuitive right now, but I'm working on it! 😅 If you have suggestions or want to help improve it, please reach out!
+I’m aware that the UI could use some polish, and I’m actively working on improvements. 😅 If you have any suggestions or want to contribute, please reach out!
 
 ## 🎉 Contributing
 
@@ -83,7 +95,7 @@ Want to help out? Awesome! Feel free to open issues or submit pull requests. Let
 
 ## 📬 Contact
 
-If you have questions or suggestions, feel free to reach out! Social links are in my profile. 🌟
+For questions, feedback, or suggestions, don’t hesitate to reach out! Social links are available in my profile. 🌟
 
 ---
 
