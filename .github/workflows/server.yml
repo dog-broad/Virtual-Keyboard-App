@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ServerApp
-          path: server/dist/ServerApp.exe
+          path: dist/ServerApp.exe
 
       - name: Get latest release
         id: get_release
