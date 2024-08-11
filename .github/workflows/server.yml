@@ -55,6 +55,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y gh
 
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ServerApp
+
+      - name: Check if file exists
+        run: |
+          if [ -f "ServerApp.exe" ]; then
+            echo "File ServerApp.exe found."
+          else
+            echo "File ServerApp.exe not found."
+            exit 1
+          fi
+
       - name: Get latest release tag
         id: get_release
         env:
@@ -86,4 +100,4 @@ jobs:
           if [ -z "$release_tag" ]; then
             release_tag="v1.0.0"  # Ensure the tag is set if it was created
           fi
-          gh release upload $release_tag server/dist/ServerApp.exe --clobber
+          gh release upload $release_tag ServerApp.exe --clobber
