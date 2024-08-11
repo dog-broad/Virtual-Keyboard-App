@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Ensure the runner is Windows
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -40,34 +40,46 @@ jobs:
           name: ServerApp
           path: dist/ServerApp.exe
 
-      - name: Get latest release
-        id: get_release
-        shell: pwsh
-        run: |
-          $release = Invoke-RestMethod -Uri "https://api.github.com/repos/dog-broad/Virtual-Keyboard-App/releases/latest"
-          $release_id = $release.id
-          $upload_url = $release.upload_url -replace '\{.*\}', ''
-          Write-Output "Release ID: $release_id"
-          Write-Output "Upload URL: $upload_url"
-          [System.IO.File]::WriteAllText("$env:GITHUB_ENV", "release_id=$release_id`nupload_url=$upload_url")
-
-  upload:
-    runs-on: ubuntu-latest  # This job can run on Ubuntu since it just uploads artifacts
-    needs: build  # Ensure this job runs after the build job completes
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write  # Needed to create and update releases
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: ServerApp
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Upload to latest release
-        shell: bash
+      - name: Install GitHub CLI
         run: |
-          filePath="ServerApp.exe"
-          uploadUrl="${{ env.upload_url }}?name=ServerApp.exe"
-          echo "Uploading $filePath to $uploadUrl"
-          curl -X POST "$uploadUrl" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: application/octet-stream" \
-            --data-binary @"$filePath"
+          sudo apt-get update
+          sudo apt-get install -y gh
+
+      - name: Get latest release tag
+        id: get_release
+        run: |
+          latest_release_tag=$(gh release list --limit 1 --json tagName -q '.[] | .tagName')
+          echo "Latest release tag: $latest_release_tag"
+          echo "latest_release_tag=$latest_release_tag" >> $GITHUB_ENV
+
+      - name: Create or update release
+        id: create_update_release
+        run: |
+          if [ -z "${{ env.latest_release_tag }}" ]; then
+            echo "No release found. Creating a new release..."
+            release_tag="v1.0.0"  # Replace with your versioning scheme
+            gh release create $release_tag
+            echo "Created new release with tag: $release_tag"
+          else
+            echo "Using existing release with tag: ${{ env.latest_release_tag }}"
+          fi
+
+      - name: Upload Release Asset
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          release_tag="${{ env.latest_release_tag }}"
+          if [ -z "$release_tag" ]; then
+            release_tag="v1.0.0"  # Ensure the tag is set if it was created
+          fi
+          gh release upload $release_tag server/dist/ServerApp.exe --clobber
